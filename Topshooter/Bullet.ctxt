@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Bullet
+comment1.params=startX\ startY\ angle
+comment1.target=Bullet(double,\ double,\ double)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moveForward()
+comment4.params=
+comment4.target=void\ checkBounds()
+numComments=5
