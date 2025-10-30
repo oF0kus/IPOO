@@ -4,11 +4,13 @@ public class Player extends Actor
 {
     private int speed = 4;
     private int shootCooldown = 0;
+    private int life = 3;
 
     public void act()
     {
         movePlayer();
         shoot();
+        checkEnemyCollision();
         if (shootCooldown > 0) shootCooldown--;
     }
     // Controla o movimento com as teclas W, A, S, D
@@ -48,6 +50,15 @@ public class Player extends Actor
             Bullet b = new Bullet(getX(), getY(), angle);
             getWorld().addObject(b, getX(), getY());
             shootCooldown = 10;
+        }
+    }
+    
+    
+     private void checkEnemyCollision() {
+        Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
+        if (e != null) {
+            ((MyWorld) getWorld()).removeLife(); // avisa o mundo pra tirar 1 vida
+            getWorld().removeObject(e); // remove o inimigo que encostou
         }
     }
 }
